@@ -26,33 +26,33 @@ void Building::add(long long nodeid)
 void Building::print(const Nodes& nodes)
 { 
     cout << Name << endl << "Address: " << StreetAddress << endl << "Building ID: "  << ID << endl;
-    cout << "Nodes: " << endl;       
+    cout << "# perimeter nodes: " << NodeIDs.size() << endl;       
     //
     // Display building nodes 
     //
-    for (long long id : NodeIDs)
-    {
-    double lat, lon;
-    bool isEntrance;
+    // for (long long id : NodeIDs)
+    // {
+    // double lat, lon;
+    // bool isEntrance;
 
-    if(nodes.find(id, lat, lon, isEntrance))
-        {
+    // if(nodes.find(id, lat, lon, isEntrance))
+    //     {
         
-        cout <<  " " << id << ": " << "(" << lat << ", " << lon << ")";
-        if (isEntrance)
-        {
-            cout << ", is entrance" << endl;
-        }
-        else
-        {
-            cout << endl;
-        }
-        }
-    else //Node not found
-        {
-        cout << id << "** NOT FOUND **" << endl;
-        }
-    }
+    //     cout <<  " " << id << ": " << "(" << lat << ", " << lon << ")";
+    //     if (isEntrance)
+    //     {
+    //         cout << ", is entrance" << endl;
+    //     }
+    //     else
+    //     {
+    //         cout << endl;
+    //     }
+    //     }
+    // else //Node not found
+    //     {
+    //     cout << id << "** NOT FOUND **" << endl;
+    //     }
+    // }
 }
 
 //
