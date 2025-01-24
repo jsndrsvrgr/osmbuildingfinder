@@ -11,6 +11,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 #include "building.h"
 #include "tinyxml2.h"
@@ -25,9 +26,8 @@ using namespace tinyxml2;
 class Buildings
 {
 
-  vector<Building> MapBuildings;
-
 public:
+vector<Building> MapBuildings;
   //
   // readMapBuildings
   //
@@ -35,12 +35,17 @@ public:
   // stores all the buildings into the given vector.
   //
   void readMapBuildings(XMLDocument& xmldoc);
+  //
+  // print prints all of the existing buildings
+  //
+  void print();
 
   //
   // accessors / getters
   //
   int getNumMapBuildings();
   vector<Building> getMapBuildings() const;
+  
 };
 
 

@@ -56,24 +56,21 @@ int main()
     {
       if (answer == "*") //Return a list of all buildings
       {
-        for (i = 0; i < buildings.getNumMapBuildings(); i++)
-        {
-          cout << mapBuildings[i].getID() << ": " << mapBuildings[i].getName() << ", " << mapBuildings[i].getStreetAddress() << endl;
-        }
+        buildings.print();
       }       
       find = false; //Create a flag to note if any building with inputted name exist
-      for (i = 0; i < buildings.getNumMapBuildings(); i++) //Iterate linearily through every building to match input
+      for (Building B : buildings.MapBuildings) //Iterate linearily through every building to match input
       {
-        position = mapBuildings[i].getName().find(answer);    
+        position = B.getName().find(answer);    
         if (position != string::npos) // The string contains a part of a building
         {
         find = true;
-        cout << mapBuildings[i].getName() << endl << "Address: " << mapBuildings[i].getStreetAddress() << endl << "Building ID: "  << mapBuildings[i].getID() << endl;
+        cout << B.getName() << endl << "Address: " << B.getStreetAddress() << endl << "Building ID: "  << B.getID() << endl;
         cout << "Nodes: " << endl;       
         //
         // Display building nodes 
         //
-        for (long long id : mapBuildings[i].getNodeIDs())
+        for (long long id : B.getNodeIDs())
           {
             if(nodes.find(id, lat, lon, isEntrance))
               {

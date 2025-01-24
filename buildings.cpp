@@ -59,6 +59,18 @@ using namespace tinyxml2;
     way = way->NextSiblingElement("way");
     }
   }
+  //
+  // print prints all of the existing buildings
+  //
+  void Buildings::print()
+  {
+
+    for (Building& B : MapBuildings)
+    {
+      cout << B.getID() << ": " << B.getName() << ", " << B.getStreetAddress() << endl;
+    }
+        
+  }
 //
 // accessors / getters
 //
