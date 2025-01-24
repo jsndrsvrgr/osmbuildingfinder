@@ -41,6 +41,10 @@ vector<Building> MapBuildings;
   void print();
 
   //
+  // findAndPrint searches for a building and prints the buildings attributes
+  //
+  void findAndPrint(string& answer, Nodes& nodes);
+  //
   // accessors / getters
   //
   int getNumMapBuildings();

@@ -20,6 +20,40 @@ void Building::add(long long nodeid)
     this->NodeIDs.push_back(nodeid);
 }
 
+//
+// print prints the attributes of the building 
+//
+void Building::print(const Nodes& nodes)
+{ 
+    cout << Name << endl << "Address: " << StreetAddress << endl << "Building ID: "  << ID << endl;
+    cout << "Nodes: " << endl;       
+    //
+    // Display building nodes 
+    //
+    for (long long id : NodeIDs)
+    {
+    double lat, lon;
+    bool isEntrance;
+
+    if(nodes.find(id, lat, lon, isEntrance))
+        {
+        
+        cout <<  " " << id << ": " << "(" << lat << ", " << lon << ")";
+        if (isEntrance)
+        {
+            cout << ", is entrance" << endl;
+        }
+        else
+        {
+            cout << endl;
+        }
+        }
+    else //Node not found
+        {
+        cout << id << "** NOT FOUND **" << endl;
+        }
+    }
+}
 
 //
 // accessors / getters

@@ -14,6 +14,8 @@
 #include <vector>
 
 #include "node.h"
+#include <iostream>
+#include "nodes.h"
 
 using namespace std;
 
@@ -46,6 +48,11 @@ public:
   // adds the given nodeid to the end of the vector.
   //
   void add(long long nodeid);
+  //
+  // print prints the parameter of a building
+  //
+  void print(const Nodes& nodes);
+
 
   //
   // accessor

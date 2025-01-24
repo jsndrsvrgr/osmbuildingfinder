@@ -24,10 +24,8 @@ int main()
   string answer;
   int i;
   vector<Building> mapBuildings;
-  size_t position;
-  double lat, lon;
-  bool isEntrance;
-  bool find;
+
+
 
   //
   // Load the map file and parse nodes and buildings
@@ -58,44 +56,9 @@ int main()
       {
         buildings.print();
       }       
-      find = false; //Create a flag to note if any building with inputted name exist
-      for (Building B : buildings.MapBuildings) //Iterate linearily through every building to match input
-      {
-        position = B.getName().find(answer);    
-        if (position != string::npos) // The string contains a part of a building
-        {
-        find = true;
-        cout << B.getName() << endl << "Address: " << B.getStreetAddress() << endl << "Building ID: "  << B.getID() << endl;
-        cout << "Nodes: " << endl;       
-        //
-        // Display building nodes 
-        //
-        for (long long id : B.getNodeIDs())
-          {
-            if(nodes.find(id, lat, lon, isEntrance))
-              {
-                
-                cout <<  " " << id << ": " << "(" << lat << ", " << lon << ")";
-                if (isEntrance)
-                {
-                  cout << ", is entrance" << endl;
-                }
-                else
-                {
-                  cout << endl;
-                }
-              }
-            else //Node not found
-              {
-                cout << id << "** NOT FOUND **" << endl;
-              }
-          }
-        }       
+      else{
+        buildings.findAndPrint(answer, nodes);
       }
-      if (!find)
-      {
-        cout << "No such building" << endl;
-      }     
       cout << "Enter building name (partial or complete), or * to list, or $ to end>" << endl;
       getline(cin, answer);
     }

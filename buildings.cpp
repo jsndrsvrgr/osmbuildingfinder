@@ -71,6 +71,26 @@ using namespace tinyxml2;
     }
         
   }
+  //
+  // findAndPrint searches for a building and prints the buildings attributes
+  //
+  void Buildings::findAndPrint(string& answer, Nodes& nodes)
+  {
+    bool find = false; //Create a flag to note if any building with inputted name exist
+    for (Building& B : MapBuildings) //Iterate linearily through every building to match input
+    {
+      size_t position = B.getName().find(answer);    
+      if (position != string::npos) // The string contains a part of a building
+      {
+      B.print(nodes);
+      find = true;
+      }       
+    }
+    if (!find)
+    {
+      cout << "No such building" << endl;
+    }     
+  }
 //
 // accessors / getters
 //
