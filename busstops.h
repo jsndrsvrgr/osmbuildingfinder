@@ -20,4 +20,8 @@ class BusStops
     // print prints all of the existing busstops
     //
     void print();
+    //
+    //closestStops find the closest stops to a given buildings
+    //
+    pair<BusStop, BusStop> closestStops(double Lat, double Lon);
 };

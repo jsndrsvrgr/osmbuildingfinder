@@ -67,7 +67,7 @@ int main()
         busStops.print();
       }       
       else{
-        buildings.findAndPrint(answer, nodes);
+        buildings.findAndPrint(answer, nodes, busStops);
       }
       cout << "Enter building name (partial or complete), or * to list, or $ to end>" << endl;
       getline(cin, answer);

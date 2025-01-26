@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "building.h"
+#include "busstops.h"
 #include "tinyxml2.h"
 
 using namespace std;
@@ -43,7 +44,7 @@ vector<Building> MapBuildings;
   //
   // findAndPrint searches for a building and prints the buildings attributes
   //
-  void findAndPrint(string& answer, Nodes& nodes);
+  void findAndPrint(string& answer, Nodes& nodes, BusStops& busStops);
   //
   // accessors / getters
   //

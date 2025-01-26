@@ -18,15 +18,24 @@ string Direction;
 string Location;
 double Lat;
 double Lon;
+double Distance;
 
 public:
-BusStop(string ID, string Street, string Name, string Direction, string Location, 
-double Lat, double Lon);
+// Default constructor
+BusStop();
+
+BusStop(string id_str, string route_str, string stopname, string direction, string location, 
+double lat_str, double lon_str);
 
 //
+// Prints information about the stop
+//
+void print();
+
+void setDistance(double distance);
 // accessors
 //
-
+double getDistance();
 string getID();
 string getStreet();
 string getName();

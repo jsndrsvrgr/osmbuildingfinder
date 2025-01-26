@@ -10,6 +10,7 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include "dist.h"
 
 using namespace std;
 
@@ -67,3 +68,32 @@ void BusStops::print()
         cout << B.getLocation() << ", location (" << B.getLat() << ", " << B.getLon() << ")" << endl;
     }
 }
+//
+//closestStops find the closest stops to a given buildings
+//
+pair<BusStop, BusStop> BusStops::closestStops(double Lat, double Lon)
+{
+    BusStop NorthBound;
+    BusStop SouthBound;
+    
+    double distanceNorth = numeric_limits<double>::max();
+    double distanceSouth = numeric_limits<double>::max();
+
+    for (BusStop& B : MapStops){
+       double distance = distBetween2Points(Lat, Lon, B.getLat(), B.getLon());
+
+       B.setDistance(distance);
+       
+       if (B.getDirection() == "Northbound" && distance < distanceNorth)
+       {
+        NorthBound = B;
+        distanceNorth = distance;
+       }
+       if (B.getDirection() == "Southbound" && distance < distanceSouth){
+        SouthBound = B;
+        distanceSouth = distance;
+       }
+    }
+    return make_pair(NorthBound, SouthBound);
+    }
+    

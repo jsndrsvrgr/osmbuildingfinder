@@ -10,6 +10,8 @@
 #include <cassert>
 
 #include "buildings.h"
+#include "busstops.h"
+#include "busstop.h"
 #include "osm.h"
 #include "tinyxml2.h"
 
@@ -74,7 +76,7 @@ using namespace tinyxml2;
   //
   // findAndPrint searches for a building and prints the buildings attributes
   //
-  void Buildings::findAndPrint(string& answer, Nodes& nodes)
+  void Buildings::findAndPrint(string& answer, Nodes& nodes, BusStops& busStops)
   {
     bool find = false; //Create a flag to note if any building with inputted name exist
     for (Building& B : MapBuildings) //Iterate linearily through every building to match input
@@ -83,6 +85,9 @@ using namespace tinyxml2;
       if (position != string::npos) // The string contains a part of a building
       {
       B.print(nodes);
+      pair<BusStop, BusStop> closestStops = busStops.closestStops(B.getLocation(nodes).first, B.getLocation(nodes).second);
+      closestStops.second.print();
+      closestStops.first.print();
       find = true;
       }       
     }
