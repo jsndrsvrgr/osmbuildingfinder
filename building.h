@@ -43,7 +43,6 @@ public:
   // constructor
   //
   Building(long long id, string name, string streetAddr);
-
   //
   // adds the given nodeid to the end of the vector.
   //
@@ -52,8 +51,11 @@ public:
   // print prints the parameter of a building
   //
   void print(const Nodes& nodes);
-
-
+  //
+  //
+  // gets the center (lat, lon) of the building based
+  // on the nodes that form the perimeter
+  pair<double, double> getLocation(const Nodes& nodes);
   //
   // accessor
   // 

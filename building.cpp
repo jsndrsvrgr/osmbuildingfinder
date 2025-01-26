@@ -4,6 +4,8 @@
 // 
 
 #include "building.h"
+#include <utility>
+#include <iostream>
 
 using namespace std;
 
@@ -27,6 +29,9 @@ void Building::print(const Nodes& nodes)
 { 
     cout << Name << endl << "Address: " << StreetAddress << endl << "Building ID: "  << ID << endl;
     cout << "# perimeter nodes: " << NodeIDs.size() << endl;       
+    pair <double, double> location = this->getLocation(nodes);
+    cout << "Location: (" << location.first << ", " << location.second << ")" << endl;
+     
     //
     // Display building nodes 
     //
@@ -54,7 +59,38 @@ void Building::print(const Nodes& nodes)
     //     }
     // }
 }
+//
+// gets the center (lat, lon) of the building based
+// on the nodes that form the perimeter
+pair<double, double> Building::getLocation(const Nodes& nodes)
+{   
+    double sumLat, sumLon;
+    double avgLat, avgLon;
+    int count;
 
+    for (long long id : NodeIDs)
+    {
+        double lat, lon;
+        bool isEntrance;
+
+        if(nodes.find(id, lat, lon, isEntrance))
+        {
+            sumLat += lat;
+            sumLon += lon;
+            count ++;
+        }
+    }
+    if(count == 0)
+    {
+        return make_pair(0,0);
+    }
+    avgLat = sumLat / NodeIDs.size();
+    avgLon = sumLon / NodeIDs.size();
+    
+    return make_pair(avgLat, avgLon);
+
+
+}
 //
 // accessors / getters
 //
