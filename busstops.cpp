@@ -1,34 +1,69 @@
 /*busstops.cpp*/
 
-#pragma once
 #include "busstops.h"
+#include "busstop.h" 
 #include <string>
 #include <vector>
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 //
-// constructor
+// constructor which given a filename takes the information of the busstops and creates a 
+// busstop object to store the information
 //
 BusStops::BusStops(string filename)
     : Filename(filename)
     {
+        ifstream infile;
         string line;
-        getline(filename, line); // read a line from the input file
-        if (infile.fail())
-            break;
-        stringstream parser(line); // setup to parse the line
 
-        string id_str, route_str, stopname, direction, location, lat_str, lon_str;
+        infile.open(Filename);
+        if (!infile.good()) //file not found:
+            return;
+        
+        while(!infile.eof()){           
+            
+            getline(infile, line); // read a line from the input file
+            if (infile.fail())
+                break;
+            stringstream parser(line); // setup to parse the line
+            string id_str, route_str, stopname, direction, location, lat_str, lon_str;
 
-        getline(parser, id_str, ','); 
-        getline(parser, route_str, ',');
-        getline(parser, stopname, ',');
-        getline(parser, direction, ',');
-        getline(parser, location, ',');
-        getline(parser, lat_str, ',');
-        getline(parser, lon_str);
+            getline(parser, id_str, ','); 
+            getline(parser, route_str, ',');
+            getline(parser, stopname, ',');
+            getline(parser, direction, ',');
+            getline(parser, location, ',');
+            getline(parser, lat_str, ',');
+            getline(parser, lon_str);
+
+            double lat = stod(lat_str);
+            double lon = stod(lon_str);
+
+            BusStop busStop(id_str, route_str, stopname, direction, location, lat, lon);
+            MapStops.push_back(busStop);
+        }
+        infile.close();
+        
+        
     };
+  //
+  // print prints all of the existing busstops
+  //
+void BusStops::print()
+{
+    sort(MapStops.begin(), MapStops.end(),
+    [](BusStop& b1, BusStop& b2) { return b1.getID() < b2.getID(); } );
 
+    for (BusStop& B: MapStops)
+    {
+        cout << B.getID() << ": " << B.getName() << ", " << B.getStreet() << ", " << B.getDirection() << ", ";
+        cout << B.getLocation() << ", location (" << B.getLat() << ", " << B.getLon() << ")" << endl;
+    }
+}

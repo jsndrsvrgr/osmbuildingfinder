@@ -43,6 +43,7 @@ public:
   // constructor
   //
   Building(long long id, string name, string streetAddr);
+
   //
   // adds the given nodeid to the end of the vector.
   //

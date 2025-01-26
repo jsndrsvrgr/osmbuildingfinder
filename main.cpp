@@ -11,12 +11,14 @@
 #include "osm.h"
 #include "tinyxml2.h"
 #include "buildings.h"
+#include "busstops.h"
 
 using namespace std;
 
 int main()
 {
   string filename;
+  string filenametxt;
   XMLDocument document;
   Nodes nodes;
   int nodesCount;
@@ -33,6 +35,7 @@ int main()
   cout << "** NU open street map **" << endl;
   cout << endl << "Enter map file name>" << endl;
   getline(cin, filename);
+  filenametxt = "bus-stops.txt";
   
     //
     // Output total nodes and buildings
@@ -41,13 +44,16 @@ int main()
   {
     nodes.readMapNodes(document);
     buildings.readMapBuildings(document);
+    BusStops busStops(filenametxt);
+
     nodesCount = nodes.getNumMapNodes();
     cout << "# of nodes: " << nodesCount << endl;
     cout << "# of buildings: " << buildings.getNumMapBuildings() << endl;  
+    cout << "# of bus stops: " << busStops.MapStops.size() << endl;
     //
     // Process user input query for building
     //
-    cout << "Enter building name (partial or complete), or * to list, or $ to end>" << endl;
+    cout << "Enter building name (partial or complete), or * to list, or @ for bus stops, or $ to end>" << endl;
     getline(cin, answer);
     mapBuildings = buildings.getMapBuildings();
     while (answer != "$") 
@@ -55,6 +61,10 @@ int main()
       if (answer == "*") //Return a list of all buildings
       {
         buildings.print();
+      }
+      else if (answer == "@")
+      {
+        busStops.print();
       }       
       else{
         buildings.findAndPrint(answer, nodes);
