@@ -12,11 +12,21 @@
 #include "tinyxml2.h"
 #include "buildings.h"
 #include "busstops.h"
+#include "curl_util.h"
+#include "json.hpp"
+using json = nlohmann::json;
 
 using namespace std;
 
 int main()
 {
+  CURL* curl = curl_easy_init();
+  if (curl == nullptr) {
+  cout << "**ERROR:" << endl;
+  cout << "**ERROR: unable to initialize curl library" << endl;
+  cout << "**ERROR:" << endl;
+  return 0;
+  }
   string filename;
   string filenametxt;
   XMLDocument document;
@@ -79,6 +89,12 @@ int main()
     // cout << "# of calls to getID(): " << Node::getCallsToGetID() << endl;
     // cout << "# of Nodes created: " << Node::getCreated() << endl;
     // cout << "# of Nodes copied: " << Node::getCopied() << endl;
+    //
+    // done:
+    //
+    curl_easy_cleanup(curl);
+    cout << endl;
+    cout << "** Done **" << endl;
     return 0;
   }
   else
