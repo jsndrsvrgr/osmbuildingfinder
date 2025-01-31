@@ -8,6 +8,7 @@
 #include "curl_util.h"
 #include "json.hpp"
 #include <limits>
+#include <stdexcept>
 
 using json = nlohmann::json;
 using namespace std;
@@ -57,9 +58,17 @@ void BusStop::print(CURL* curl)
     }
     
     for(auto& M : predictions){
-        cout << "  vehicle #" << stoi(M["vid"].get_ref<std::string&>());
-        cout << " on route " << Name << " travelling " << M["rtdir"].get_ref<std::string&>();
-        cout << " to arrive in " << stoi(M["prdctdn"].get_ref<std::string&>()) << " mins" << endl;
+
+        try{
+            cout << "  vehicle #" << stoi(M["vid"].get_ref<std::string&>());
+            cout << " on route " << Name << " travelling " << M["rtdir"].get_ref<std::string&>();
+            cout << " to arrive in " << stoi(M["prdctdn"].get_ref<std::string&>()) << " mins" << endl;
+        }
+        catch (exception& e){
+            cout << " error" << endl;
+            cout << " malformed CTA response, prediction unavailable"
+            << " (error: " << e.what() << ")" << endl;
+        }
     }
     
 }
