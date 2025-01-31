@@ -77,7 +77,7 @@ using namespace tinyxml2;
   //
   // findAndPrint searches for a building and prints the buildings attributes
   //
-  void Buildings::findAndPrint(string& answer, Nodes& nodes, BusStops& busStops, CURL* curl)
+  void Buildings::findAndPrint(string& answer, const Nodes& nodes, BusStops& busStops, CURL* curl)
   {
     bool find = false; //Create a flag to note if any building with inputted name exist
     for (Building& B : MapBuildings) //Iterate linearily through every building to match input

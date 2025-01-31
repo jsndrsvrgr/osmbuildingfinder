@@ -71,9 +71,8 @@ void Building::print(const Nodes& nodes, BusStops& busStops, CURL* curl)
 // on the nodes that form the perimeter
 pair<double, double> Building::getLocation(const Nodes& nodes)
 {   
-    double sumLat, sumLon;
-    double avgLat, avgLon;
-    int count;
+    double sumLat = 0.0, sumLon = 0.0;
+    int count = 0;
 
     for (long long id : NodeIDs)
     {
@@ -91,8 +90,8 @@ pair<double, double> Building::getLocation(const Nodes& nodes)
     {
         return make_pair(0,0);
     }
-    avgLat = sumLat / NodeIDs.size();
-    avgLon = sumLon / NodeIDs.size();
+    double avgLat = sumLat / count;
+    double avgLon = sumLon / count;
     
     return make_pair(avgLat, avgLon);
 

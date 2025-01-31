@@ -45,7 +45,7 @@ vector<Building> MapBuildings;
   //
   // findAndPrint searches for a building and prints the buildings attributes
   //
-  void findAndPrint(string& answer, Nodes& nodes, BusStops& busStops, CURL* curl);
+  void findAndPrint(string& answer, const Nodes& nodes, BusStops& busStops, CURL* curl);
   //
   // accessors / getters
   //
