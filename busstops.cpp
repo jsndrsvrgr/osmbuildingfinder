@@ -66,7 +66,7 @@ void BusStops::print()
 
     for (BusStop& B: MapStops)
     {
-        cout << B.getID() << ": " << B.getName() << ", " << B.getStreet() << ", " << B.getDirection() << ", ";
+        cout << B.getID() << ": bus " << B.getStreet()  << ", " << B.getName() << ", " << B.getDirection() << ", ";
         cout << B.getLocation() << ", location (" << B.getLat() << ", " << B.getLon() << ")" << endl;
     }
 }

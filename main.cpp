@@ -44,7 +44,7 @@ int main()
   // Load the map file and parse nodes and buildings
   //
   cout << "** NU open street map **" << endl;
-  cout << endl << "Enter map file name>" << endl;
+  cout << endl << "Enter map filename>" << endl;
   getline(cin, filename);
   filenametxt = "bus-stops.txt";
   
@@ -64,7 +64,7 @@ int main()
     //
     // Process user input query for building
     //
-    cout << "Enter building name (partial or complete), or * to list, or @ for bus stops, or $ to end>" << endl;
+    cout << endl << "Enter building name (partial or complete), or * to list, or @ for bus stops, or $ to end>" << endl;
     getline(cin, answer);
     mapBuildings = buildings.getMapBuildings();
     while (answer != "$") 
@@ -80,13 +80,12 @@ int main()
       else{
         buildings.findAndPrint(answer, nodes, busStops, curl);
       }
-      cout << "Enter building name (partial or complete), or * to list, or $ to end>" << endl;
+      cout << endl << "Enter building name (partial or complete), or * to list, or @ for bus stops, or $ to end>" << endl;
       getline(cin, answer);
     }
     //
     // Final statistics and terminate
     //
-    cout << endl << "** Done **" << endl;
     // cout << "# of calls to getID(): " << Node::getCallsToGetID() << endl;
     // cout << "# of Nodes created: " << Node::getCreated() << endl;
     // cout << "# of Nodes copied: " << Node::getCopied() << endl;

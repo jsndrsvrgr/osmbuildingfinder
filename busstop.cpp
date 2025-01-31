@@ -37,9 +37,9 @@ void BusStop::print(CURL* curl)
     }
     if (Direction == "Northbound")
     {
-        cout<< "closest northbound bus stop:" << endl;
+        cout<< "Closest northbound bus stop:" << endl;
     }
-    cout << " " << ID << ": " << Name << ", bus #" << Route << ", " << Location << ", " << Distance << " miles" << endl;
+    cout << "  " << ID << ": " << Name << ", bus #" << Route << ", " << Location << ", " << Distance << " miles" << endl;
     string key = "mDPEj7sBRKHaqfGmcBZTUZrRX";
     string url = "http://ctabustracker.com/bustime/api/v2/getpredictions?key=" + key + "&rt=" + Route + "&stpid=" + ID + "&format=json";
     string response;
@@ -61,7 +61,7 @@ void BusStop::print(CURL* curl)
 
         try{
             cout << "  vehicle #" << stoi(M["vid"].get_ref<std::string&>());
-            cout << " on route " << Name << " travelling " << M["rtdir"].get_ref<std::string&>();
+            cout << " on route " << Route << " travelling " << M["rtdir"].get_ref<std::string&>();
             cout << " to arrive in " << stoi(M["prdctdn"].get_ref<std::string&>()) << " mins" << endl;
         }
         catch (exception& e){
