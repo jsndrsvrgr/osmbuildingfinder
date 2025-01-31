@@ -14,6 +14,7 @@
 #include "busstop.h"
 #include "osm.h"
 #include "tinyxml2.h"
+#include "curl_util.h"
 
 using namespace std;
 using namespace tinyxml2;
@@ -76,7 +77,7 @@ using namespace tinyxml2;
   //
   // findAndPrint searches for a building and prints the buildings attributes
   //
-  void Buildings::findAndPrint(string& answer, Nodes& nodes, BusStops& busStops)
+  void Buildings::findAndPrint(string& answer, Nodes& nodes, BusStops& busStops, CURL* curl)
   {
     bool find = false; //Create a flag to note if any building with inputted name exist
     for (Building& B : MapBuildings) //Iterate linearily through every building to match input
@@ -84,10 +85,7 @@ using namespace tinyxml2;
       size_t position = B.getName().find(answer);    
       if (position != string::npos) // The string contains a part of a building
       {
-      B.print(nodes);
-      pair<BusStop, BusStop> closestStops = busStops.closestStops(B.getLocation(nodes).first, B.getLocation(nodes).second);
-      closestStops.second.print();
-      closestStops.first.print();
+      B.print(nodes, busStops, curl);
       find = true;
       }       
     }

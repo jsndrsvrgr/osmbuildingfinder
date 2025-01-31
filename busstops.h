@@ -6,6 +6,8 @@
 #include <vector>
 #include <iostream>
 #include "busstop.h"
+#include <limits>
+
 
 using namespace std;
 

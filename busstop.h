@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "curl_util.h"
+#include <limits>
+
 
 using namespace std;
 
@@ -12,7 +15,7 @@ class BusStop
 {
 private:
 string ID;
-string Street;
+string Route;
 string Name;
 string Direction;
 string Location;
@@ -30,7 +33,7 @@ double lat_str, double lon_str);
 //
 // Prints information about the stop
 //
-void print();
+void print(CURL* curl);
 
 void setDistance(double distance);
 // accessors

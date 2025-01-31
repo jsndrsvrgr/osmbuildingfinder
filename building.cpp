@@ -4,6 +4,10 @@
 // 
 
 #include "building.h"
+#include "nodes.h"
+#include "busstops.h"
+#include "curl_util.h"
+#include "building.h"
 #include <utility>
 #include <iostream>
 
@@ -25,13 +29,16 @@ void Building::add(long long nodeid)
 //
 // print prints the attributes of the building 
 //
-void Building::print(const Nodes& nodes)
+void Building::print(const Nodes& nodes, BusStops& busStops, CURL* curl)
 { 
     cout << Name << endl << "Address: " << StreetAddress << endl << "Building ID: "  << ID << endl;
     cout << "# perimeter nodes: " << NodeIDs.size() << endl;       
     pair <double, double> location = this->getLocation(nodes);
     cout << "Location: (" << location.first << ", " << location.second << ")" << endl;
-     
+    
+    pair<BusStop, BusStop> closestStops = busStops.closestStops(location.first, location.second);
+    closestStops.second.print(curl);
+    closestStops.first.print(curl);
     //
     // Display building nodes 
     //

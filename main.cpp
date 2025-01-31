@@ -12,6 +12,7 @@
 #include "tinyxml2.h"
 #include "buildings.h"
 #include "busstops.h"
+#include "busstop.h"
 #include "curl_util.h"
 #include "json.hpp"
 using json = nlohmann::json;
@@ -77,7 +78,7 @@ int main()
         busStops.print();
       }       
       else{
-        buildings.findAndPrint(answer, nodes, busStops);
+        buildings.findAndPrint(answer, nodes, busStops, curl);
       }
       cout << "Enter building name (partial or complete), or * to list, or $ to end>" << endl;
       getline(cin, answer);

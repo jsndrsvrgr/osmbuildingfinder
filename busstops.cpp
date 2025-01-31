@@ -11,6 +11,8 @@
 #include <vector>
 #include <algorithm>
 #include "dist.h"
+#include <limits>
+
 
 using namespace std;
 

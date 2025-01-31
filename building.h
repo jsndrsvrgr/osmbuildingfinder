@@ -16,6 +16,9 @@
 #include "node.h"
 #include <iostream>
 #include "nodes.h"
+#include "busstops.h"
+#include "busstop.h"
+#include "curl_util.h"
 
 using namespace std;
 
@@ -51,7 +54,7 @@ public:
   //
   // print prints the parameter of a building
   //
-  void print(const Nodes& nodes);
+  void print(const Nodes& nodes, BusStops& busStops, CURL* curl);
   //
   //
   // gets the center (lat, lon) of the building based

@@ -16,6 +16,7 @@
 #include "building.h"
 #include "busstops.h"
 #include "tinyxml2.h"
+#include "curl_util.h"
 
 using namespace std;
 using namespace tinyxml2;
@@ -44,7 +45,7 @@ vector<Building> MapBuildings;
   //
   // findAndPrint searches for a building and prints the buildings attributes
   //
-  void findAndPrint(string& answer, Nodes& nodes, BusStops& busStops);
+  void findAndPrint(string& answer, Nodes& nodes, BusStops& busStops, CURL* curl);
   //
   // accessors / getters
   //
