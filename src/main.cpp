@@ -46,7 +46,7 @@ int main()
   cout << "** NU open street map **" << endl;
   cout << endl << "Enter map filename>" << endl;
   getline(cin, filename);
-  filenametxt = "bus-stops.txt";
+  filenametxt = "data/bus-stops.txt";
   
     //
     // Output total nodes and buildings

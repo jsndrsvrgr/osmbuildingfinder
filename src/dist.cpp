@@ -4,10 +4,7 @@
 // Computes the distance between 2 positions, given in
 // (latitude, longitude) coordinates.
 // 
-// Prof. Joe Hummel
-// Northwestern University
-// CS 211
-// 
+
 
 #include <iostream>
 #include <cmath>

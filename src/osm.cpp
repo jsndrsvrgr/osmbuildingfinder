@@ -3,10 +3,6 @@
 //
 // Functions for working with an Open Street Map file.
 // 
-// Prof. Joe Hummel
-// Northwestern University
-// CS 211
-// 
 // References:
 // 
 // TinyXML: 

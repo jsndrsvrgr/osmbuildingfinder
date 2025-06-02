@@ -3,10 +3,7 @@
 //
 // A building in the Open Street Map.
 // 
-// Prof. Joe Hummel, Prof. Yiji Zhang
-// Northwestern University
-// CS 211
-// 
+
 
 #pragma once
 

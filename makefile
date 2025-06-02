@@ -1,6 +1,9 @@
 build:
 	rm -f ./a.out
-	g++ -std=c++17 -g -Wall main.cpp building.cpp buildings.cpp node.cpp nodes.cpp busstop.cpp busstops.cpp dist.cpp curl_util.cpp osm.cpp tinyxml2.cpp -Wno-unused-variable -Wno-unused-function -lcurl
+	g++ -std=c++17 -g -Wall -Wno-unused-variable -Wno-unused-function \
+	    -I include \
+	    src/*.cpp \
+	    -lcurl
 
 build-offline:
 	rm -f ./a.out
@@ -20,6 +23,3 @@ valgrind:
 
 clean:
 	rm -f ./a.out
-
-submit:
-	/home/cs211/w2025/tools/project02  submit  *.cpp  *.h  *.hpp README.md

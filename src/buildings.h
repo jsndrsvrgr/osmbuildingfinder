@@ -3,10 +3,7 @@
 //
 // A collection of buildings in the Open Street Map.
 // 
-// Prof. Joe Hummel
-// Northwestern University
-// CS 211: Winter 2023
-// 
+
 
 #pragma once
 
