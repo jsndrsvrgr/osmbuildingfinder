@@ -1,0 +1,23 @@
+# Fly.io configuration for Northwestern Bus Finder API
+
+app = "nu-bus-finder"
+primary_region = "ord"  # Chicago region for low latency to Northwestern
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1

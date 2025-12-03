@@ -56,7 +56,7 @@ public:
   //
   // gets the center (lat, lon) of the building based
   // on the nodes that form the perimeter
-  pair<double, double> getLocation(const Nodes& nodes);
+  pair<double, double> getLocation(const Nodes& nodes) const;
   //
   // accessor
   // 

@@ -69,7 +69,7 @@ void Building::print(const Nodes& nodes, BusStops& busStops, CURL* curl)
 //
 // gets the center (lat, lon) of the building based
 // on the nodes that form the perimeter
-pair<double, double> Building::getLocation(const Nodes& nodes)
+pair<double, double> Building::getLocation(const Nodes& nodes) const
 {   
     double sumLat = 0.0, sumLon = 0.0;
     int count = 0;
