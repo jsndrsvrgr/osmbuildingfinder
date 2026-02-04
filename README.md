@@ -9,7 +9,12 @@ A comprehensive multi-platform application for Northwestern University students 
 ## Overview
 
 <p align="center">
-  <img src="assets/app-preview.png" alt="App preview showing map and buses" width="320">
+  <img src="assets/ios1.png" width="260" />
+  <img src="assets/ios2.png" width="260" />
+</p>
+<p align="center">
+  <img src="assets/ios3.png" width="260" />
+  <img src="assets/ios4.png" width="260" />
 </p>
 
 This project consists of three integrated components:
