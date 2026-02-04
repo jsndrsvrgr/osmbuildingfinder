@@ -1,8 +1,16 @@
 # Northwestern Bus Finder
 
+<p align="center">
+  <img src="assets/hero.png" alt="Northwestern Bus Finder preview" width="800">
+</p>
+
 A comprehensive multi-platform application for Northwestern University students and visitors to find buildings, track live CTA buses, and get real-time bus arrival predictions.
 
 ## Overview
+
+<p align="center">
+  <img src="assets/app-preview.png" alt="App preview showing map and buses" width="320">
+</p>
 
 This project consists of three integrated components:
 1. **C++ CLI Tool**: Command-line interface for querying OSM building data and CTA bus stops
